@@ -31,7 +31,7 @@ import flash from 'connect-flash';
 let localStrategy = passportLocal.Strategy;
 
 //auth step 3 imporet user model
-import User from '../app/views/content/models/user.js';
+import User from './models/user.js';
 
 //auth step 4, importing route
 //importing mongoose

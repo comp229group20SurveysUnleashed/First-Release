@@ -3,12 +3,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const SurveySchema = new Schema({
-    name: String, 
+    title: String, 
     question: String,
-    answerOne: String,
-    answerTwo: String,
-    answerThree: String,
-    answerFour: String
+    answer: String
+
 }, {
     timestamps: true,
     collection: 'surveys'

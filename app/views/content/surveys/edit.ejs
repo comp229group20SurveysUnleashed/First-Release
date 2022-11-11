@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
+            <form class="form" method="POST">
+                <input type="hidden" name="id" value="<%= survey._id %>" >
+                <div class="form-group">
+                    <label for="nameTextField">Survey Title</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter the Survey Title"
+                    name="title" 
+                    value="<%= survey.title %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="authorTextField">Question</label>
+                    <input type="text" class="form-control"
+                    id="authorTextField"
+                    placeholder="Enter the Question"
+                    name="question" 
+                    value="<%= survey.question %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Answer</label>
+                    <input type="text" class="form-control"
+                    id="publishedTextField"
+                    placeholder="Enter the Answer"
+                    name="answer" 
+                    value="<%= survey.answer %>"
+                    required>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="descriptionTextArea">Genre</label>
+                    <input type="text" class="form-control"
+                    id="descriptionTextArea"
+                    placeholder="Enter the Movie genre"
+                    name="genre"                     
+                    value="<%= survey.genre %>"
+                    required
+                    >
+                    </input>
+                </div>
+
+                <div class="form-group">
+                    <label for="priceTextField">Runtime (in minutes)</label>
+                    <input type="number" class="form-control"
+                    id="priceTextField"
+                    placeholder="Enter the Movie's Runtime in Minutes"
+                    name="runtime" 
+                    value="<%= survey.runtime %>"
+                    required>
+                </div> -->
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+                
+                    <a href="/survey-list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>

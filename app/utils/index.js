@@ -4,37 +4,29 @@ import { Secret } from '../../config/config.js';
 
 export function UserDisplayName(req){
     if(req.user){
-        return req.displayName;
+        return req.user.displayName;
     }
     return '';
 }
 
-export function AuthGaurd(res,req,next){
-
-    if(!req.isAuthenthicated()){
+export function AuthGuard(req, res, next){
+    if(!req.isAuthenticated()){
         return res.redirect('/login')
     }
     next();
 }
 
 export function GenerateToken(user){
-    const payload ={
+    const payload = {
         id: user._id,
         displayName: user.displayName,
+        userName: user.userName,
         emailAddress: user.emailAddress
     }
 
-//expiration
-
     const jwtOptions = {
-        expiresIn: 604800 //equivalant of 1 week
+        expiresIn: 604800 //1 Week
     }
 
     return jwt.sign(payload, Secret, jwtOptions);
-
-
-
-
 }
-
-
