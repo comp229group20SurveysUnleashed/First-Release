@@ -16,9 +16,13 @@
                         <!-- <th scope="col">Answer</th> -->
                         <!-- <th scope="col">Genre</th>
                         <th scope="col">Runtime</th> -->
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <% if(displayName) { %>
+                        <th>Report</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <% } else { %>
+                        <th>Action</th>
+                        <% } %> 
                     </tr>
                 </thead>
                 <tbody id="surveyList">
