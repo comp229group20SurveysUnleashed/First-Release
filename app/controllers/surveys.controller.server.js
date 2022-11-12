@@ -91,7 +91,7 @@ export function DisplaySurveysJoinPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Join the Survey', page: 'surveys/joinlist', survey: survey, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Join the Survey', page: 'surveys/list', survey: survey, displayName: UserDisplayName(req) });
     });    
 }
 

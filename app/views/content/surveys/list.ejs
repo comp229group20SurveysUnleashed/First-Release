@@ -28,15 +28,17 @@
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= surveys[count].title %></td>
                             <td><%= surveys[count].participate %></td>
-                            <td class="text-center col-1">
-                                <a href="/survey-edit/<%= surveys[count]._id %>"
-                                    class="btn btn-primary btn-sm">
-                                    <i class="fas fa-pencil-alt"></i> Join</a>
-                            </td>
+
                             <!-- <td><%= surveys[count].answer %></td> -->
                             <!-- <td><%= surveys[count].genre %></td>
                             <td><%= surveys[count].runtime %></td> -->
                             <% if(displayName) { %>
+                            <td class="text-center col-1">
+                                <a href="/survey-edit/<%= surveys[count]._id %>"
+                                    class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pencil-alt"></i> Report</a>
+                            </td>
+
                             
                             <td class="text-center col-1">
                                 <a href="/survey-edit/<%= surveys[count]._id %>"
@@ -49,6 +51,14 @@
                                     class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Delete</a>
                             </td>
+                            <% } else { %>
+
+                                <td class="text-center col-1">
+                                    <a href="/survey-edit/<%= surveys[count]._id %>"
+                                        class="btn btn-primary btn-sm">
+                                        <i class="fas fa-pencil-alt"></i> Join</a>
+                                </td>
+
                             <% } %> 
                         </tr>
                     <% } %>
