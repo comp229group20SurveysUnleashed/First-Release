@@ -1,9 +1,9 @@
 <div class="container">
     <h1>Survey List</h1>
-
+    <% if(displayName) { %>
     <a href="/survey-add" class="btn btn-primary" role="button">
         <i class="fas fa-plus-circle"></i> Create a Survey</a>
-   
+    <% } %>
     <div class="row">
         <div class="col">
     
@@ -12,17 +12,12 @@
                     <tr>
                         <th scope="col" class="text-center">#</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Participate Rate</th>
-                        <!-- <th scope="col">Answer</th> -->
+                        <th scope="col">Question</th>
+                        <th scope="col">Answer</th>
                         <!-- <th scope="col">Genre</th>
                         <th scope="col">Runtime</th> -->
-                        <% if(displayName) { %>
-                        <th>Report</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                        <% } else { %>
-                        <th>Action</th>
-                        <% } %> 
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="surveyList">
@@ -31,18 +26,11 @@
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= surveys[count].title %></td>
-                            <td><%= surveys[count].participate %></td>
-
-                            <!-- <td><%= surveys[count].answer %></td> -->
+                            <td><%= surveys[count].question %></td>
+                            <td><%= surveys[count].answer %></td>
                             <!-- <td><%= surveys[count].genre %></td>
                             <td><%= surveys[count].runtime %></td> -->
                             <% if(displayName) { %>
-                            <td class="text-center col-1">
-                                <a href="/survey-edit/<%= surveys[count]._id %>"
-                                    class="btn btn-primary btn-sm">
-                                    <i class="fas fa-pencil-alt"></i> Report</a>
-                            </td>
-
                             
                             <td class="text-center col-1">
                                 <a href="/survey-edit/<%= surveys[count]._id %>"
@@ -55,14 +43,6 @@
                                     class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Delete</a>
                             </td>
-                            <% } else { %>
-
-                                <td class="text-center col-1">
-                                    <a href="/survey-edit/<%= surveys[count]._id %>"
-                                        class="btn btn-primary btn-sm">
-                                        <i class="fas fa-pencil-alt"></i> Join</a>
-                                </td>
-
                             <% } %> 
                         </tr>
                     <% } %>

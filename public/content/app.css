@@ -12,24 +12,3 @@
 .container-fluid{
     border-bottom: 1px solid #000;
 }
-
-/* SURVEY PAGE CSS */
-
-.bd
-{
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-}
-.li
-{
-    text-decoration:none;
-    list-style: none;
-}
-
-.hd
-{
-    background: rgb(0, 255, 128);
-    color: rgb(61, 61, 61);
-    padding: 10px;
-}
-

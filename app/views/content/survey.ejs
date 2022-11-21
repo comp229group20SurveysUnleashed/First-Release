@@ -1,43 +1,4 @@
 <div class="container">
-    <h1>Survey List</h1>
-
-    <div class="row">
-        <div class="col">
-    
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col" class="text-center">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Participate Rate</th>
-                        <!-- <th scope="col">Answer</th> -->
-                        <!-- <th scope="col">Genre</th>
-                        <th scope="col">Runtime</th> -->
-                        <!-- <th></th> -->
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="surveyList">
-                    <!-- Repeatable Rows -->
-                    <% for(let count = 0; count < surveys.length; count++) { %>
-                        <tr>
-                            <th scope="row" class="text-center"><%= count + 1 %></th>
-                            <td><%= surveys[count].title %></td>
-                            <td><%= surveys[count].participate %></td>
-                            <td class="text-center col-1">
-                                <a href="/survey-edit/<%= surveys[count]._id %>"
-                                    class="btn btn-primary btn-sm">
-                                    <i class="fas fa-pencil-alt"></i> Join</a>
-                            </td>
-                            <!-- <td><%= surveys[count].answer %></td> -->
-                            <!-- <td><%= surveys[count].genre %></td>
-                            <td><%= surveys[count].runtime %></td> -->
-
-
-                        </tr>
-                    <% } %> 
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <h1><%= title %></h1>
+    <p> Hello and welcome. Please select your options from the navbar above</p>
 </div>
