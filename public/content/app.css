@@ -12,3 +12,12 @@
 .container-fluid{
     border-bottom: 1px solid #000;
 }
+
+
+/* CONTACT PAGE CSS */
+
+.comment
+{
+    position: relative;
+    top: -90px;
+}
