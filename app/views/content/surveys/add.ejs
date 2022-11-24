@@ -3,37 +3,68 @@
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
 
-            <form class="form" method="POST">
-                <input type="hidden" name="id" value="<%= survey._id %>" >
-                <div class="form-group">
-                    <label for="nameTextField">Survey Title</label>
-                    <input type="text" class="form-control"
-                    id="nameTextField"
-                    placeholder="Enter the Survey Title"
-                    name="title" 
-                    value="<%= survey.title %>"
-                    required>
-                </div>
 
-                <div class="form-group">
-                    <label for="authorTextField">Question</label>
-                    <input type="text" class="form-control"
-                    id="authorTextField"
-                    placeholder="Enter the Question"
-                    name="question" 
-                    value="<%= survey.question %>"
-                    required>
-                </div>
+             <!--  NOT FUNCTIONAL, IT IS ONLY A TEMPLATE TO DISPLAY THE UPCOMING FUNCTIONALITY    -->
 
-                <div class="form-group">
-                    <label for="publishedTextField">Answer</label>
-                    <input type="text" class="form-control"
-                    id="publishedTextField"
-                    placeholder="Enter the Answer"
-                    name="answer" 
-                    value="<%= survey.answer %>"
-                    required>
+
+            <body>
+
+                <button class="tablink" onclick="openPage('Template1', this, 'green')">Template 1</button>
+                <button class="tablink" onclick="openPage('Template2', this, 'green')" id="defaultOpen">Template 2</button>
+                
+                <div id="Template1" class="tabcontent">
+
+                    <form name="form1" id="form1" action="/action_page.php">
+                        Type of question: <select name="subject" id="subject">
+                            <option value="" selected="selected">Open</option>                            
+                          </select>
+                          <br>
+                          <br>
+                          <p>Question: <input type="text" value="" id="myInput"></p>
+                          <p>Answer: <input type="text" value="" id="myInput"></p>
+                            <p><button id="Questionbttn" type="button" onclick="addField()" class="btn btn-primary">🔽 Add a question</button></p>
+
                 </div>
+                
+                
+                <div id="Template2" class="tabcontent">
+                    <form name="form1" id="form1" action="/action_page.php">
+                        Type of question: <select name="subject" id="subject">
+                            <option value="" selected="selected">True/False</option>                            
+                          </select>
+                          <br>
+                          <br>
+                          <p>Question: <input type="text" value="" id="myInput"></p>
+                          <p><input type="radio" name="colors" id="red">True<br>
+                            <input type="radio" name="colors" id="blue">False
+                          </form></p>
+                            <p><button id="Questionbttn" type="button" onclick="addField()" class="btn btn-primary">🔽 Add a question</button></p>
+                            
+                </div>
+                
+            
+                <script>
+                    
+                function openPage(pageName,elmnt,color) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablink");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].style.backgroundColor = "";
+                  }
+                  document.getElementById(pageName).style.display = "block";
+                  elmnt.style.backgroundColor = color;
+                }
+                
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+               
+          
+                </script>                 
+                </body>
 
                 <!-- <div class="form-group">
                     <label for="descriptionTextArea">Genre</label>

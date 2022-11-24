@@ -13,7 +13,7 @@ export function DisplaySurveyList(req, res, next){
 }
 
 export function DisplaySurveysAddPage(req, res, next){
-    res.render('index', { title: 'Add a survey', page: 'surveys/edit', survey: {}, displayName: UserDisplayName(req) });
+    res.render('index', { title: 'Add a survey', page: 'surveys/add', survey: {}, displayName: UserDisplayName(req) });
 }
 
 export function ProcessSurveysAddPage(req, res, next){
