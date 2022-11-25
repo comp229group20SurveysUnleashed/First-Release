@@ -19,8 +19,17 @@
         </li> 
 
         <li class="nav-item">
-          <a class="nav-link <%= (page == 'survey-list') ? 'active' : ''; %>" aria-current="page" href="/survey-list"><i class="fa-solid fa-table-list fa-lg"></i> Surveys</a>
+          <a class="nav-link <%= (page == 'survey-list') ? 'active' : ''; %>" aria-current="page" href="/survey-list"><i class="fa-solid fa-table-list fa-lg"></i> Surveys</a> 
         </li> 
+
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'profile') ? 'active' : ''; %>" aria-current="page" href="/profile"><i class="fa-solid fa-table-list fa-lg"></i> Profile</a> 
+        </li> 
+
+
+
+
 
         <% if(displayName) { %>
         <li class="nav-item">
