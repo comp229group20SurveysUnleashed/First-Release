@@ -14,7 +14,9 @@ export function displayContactPage(req, res, next) {
     res.render('index', { title: 'Contact', page: 'contact', displayName: UserDisplayName(req)});
 };
 
-export function displayJoinPage(req, res, next) {
-    res.render('index', { title: 'Survey', page: 'survey'});
-};
+export function displayProfilePage(req,res, next){
+    res.render('index', {title: 'Profile', page: 'profile', displayName: UserDisplayName(req)});
+}
+
+
 

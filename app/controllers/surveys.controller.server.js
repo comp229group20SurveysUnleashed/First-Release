@@ -13,7 +13,6 @@ export function DisplaySurveyList(req, res, next){
 }
 
 export function DisplaySurveysAddPage(req, res, next){
-
     res.render('index', { title: 'Add a survey', page: 'surveys/add', survey: {}, displayName: UserDisplayName(req) });
 }
 
@@ -80,38 +79,4 @@ export function ProcessSurveyDeletePage(req, res, next){
 
         res.redirect('/survey-list');
     })
-}
-
-export function DisplaySurveysJoinPage(req, res, next){
-    let id = req.params.id;
-
-    surveyModel.findById(id, (err, survey) => {
-        if(err){
-            console.error(err);
-            res.end(err);
-        }
-
-        res.render('index', { title: 'Join the Survey', page: 'surveys/list', survey: survey, displayName: UserDisplayName(req) });
-    });    
-}
-
-export function ProcessSurveysJoinPage(req, res, next){
-
-    let id = req.params.id;
-    
-    let newSurvey = surveyModel({
-        _id: req.body.id,
-        title: req.body.title,
-        question: req.body.question,
-        answer: req.body.answer
-    });
-
-    surveyModel.updateOne({_id: id }, newSurvey, (err, Survey) => {
-        if(err){
-            console.error(err);
-            res.end(err);
-        };
-
-        res.redirect('/survey-list')
-    } )
 }
