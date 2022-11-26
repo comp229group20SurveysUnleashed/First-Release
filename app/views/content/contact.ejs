@@ -1,33 +1,24 @@
 <div class="container">
-    <h1>Customer Service Team</h1>
-    <p> Email us at easysurvey@gmail.com</p>
-    
+    <h1 style="color: #6495ed;">Contact Form</h1>   
 </div>
 
-<p>Contact Us</p>
-                
-<table >
-
-   
+<p style="font-weight: bolder;"> ✍️ Fill the contact form below for direct communication with our team</p> 
+              
+<table >   
     
     <tr>
-        <td ><label for="name">Name</label>
-
-            <input type="text" name="Name" id="Name" size="96"  maxlength="256"   minlength="100" >
+        <td style="font-weight: bolder;" >
+            <label for="name">Your Name: </label>
+            <input type="text" name="Name" id="Name" placeholder="Enter your  First and Last Name" size="96"  maxlength="256"   minlength="100" >
             <br>
             <br>
-        </td>
-        
-        
+        </td>       
         
     </tr>
-   
-      
-   
- 
 
     <tr>
-        <td>
+        <td style="font-weight: bolder;" >
+            <label class="comment">Comments:</label>
             <textarea name="contact" id="contact" cols="100" rows="5" maxlength="100" placeholder="Enter your  message" maxlength="256"   minlength="100" ></textarea>
        
              
@@ -42,10 +33,11 @@
 </tr>
 
 <tr>
+<br>
 <td class="Btn">
-<input type="submit"  value="Submit Form">
+<input style="font-weight: bolder;" type="submit" onclick="Submit()"  value="Submit Form">
 
-<input type="reset" value="Erase Form">
+<input style="font-weight: bolder;" type="button" onclick="Erase()" value="Reset">
 </td>
 
 </tr>
@@ -53,7 +45,9 @@
 </form>
 <br>
 <footer>
-<p><em>Thank you, our team will reach out asap </em><br>
+    
+</footer>
+
 </p>
 <br>
 </main>
@@ -61,5 +55,21 @@
 <br>  
 </body>
 </body>
+
+<script>
+function Submit()
+{
+   Erase();
+   alert("Thank you, Our Team will get back to you asap! 🔜 ");
+
+}
+
+function Erase()
+{
+    var form2 = document.getElementById("contact").value = "";
+    var name2 = document.getElementById("Name").value = "";
+    
+}
+</script>
+
 </html>
-<!--<p>My phone number is 647-713--6773</p>
