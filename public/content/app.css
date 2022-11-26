@@ -5,8 +5,9 @@
     font-size: 14px;
     width: 100%;
     height: 20px;
-    text-align: center;
+    text-align:center;
     user-select: none;
+    font-weight: bolder;
 }
 
 .container-fluid{
@@ -24,6 +25,7 @@
 
 
 /* HOME PAGE CSS */
+
 
       .bd-placeholder-img {
         font-size: 1.125rem;
