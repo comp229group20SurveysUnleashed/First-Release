@@ -1,7 +1,6 @@
 import surveyModel from '../models/surveys.js';
-import answerModel from '../models/answers.js';
-import { UserDisplayName } from '../utils/index.js';
-import surveys from '../models/surveys.js';
+import { UserDisplayName, UserId } from '../utils/index.js';
+
 
 export function DisplaySurveyList(req, res, next){
     surveyModel.find(function(err, surveysCollection) {
@@ -9,34 +8,29 @@ export function DisplaySurveyList(req, res, next){
             console.error(err);
             res.end(err);
         }
-
-        res.render('index', {title: 'Survey List', page: 'surveys/list', surveys: surveysCollection, displayName: UserDisplayName(req)});
+        res.render('index', {title: 'Survey List', page: 'surveys/list', 
+            surveys: surveysCollection, displayName: UserDisplayName(req), userId: UserId(req)});
     })
 }
 
-/////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////
-
-export function DisplaySurveysAddPage1(req, res, next){
-
-    res.render('index', { title: 'Add a survey - Template 1', page: 'surveys/edit1', survey: {}, displayName: UserDisplayName(req) });
+export function DisplaySurveysAddPage(req, res, next){
+    res.render('index', { title: 'Add a survey', page: 'surveys/add', 
+        survey: {}, displayName: UserDisplayName(req), userId: UserId(req) });
 }
 
-export function ProcessSurveysAddPage1(req, res, next){
+export function ProcessSurveysAddPage(req, res, next){
     
     let newSurvey = surveyModel({
         title: req.body.title,
-        question1: req.body.question1,
-        question2: req.body.question2,
-        question3: req.body.question3,
-        question4: req.body.question4,
-        question5: req.body.question5,
-        question6: req.body.question6,
-        startDate: req.body.startDate,
-        endDate : req.body.endDate,
+        startdate: req.body.startdate,
+        enddate: req.body.enddate,
+        userid: req.body.userid,
+        active: !!req.body.active,
+        //questions: []
     });
-
+    newSurvey.questions.push(req.body.questions);
+    console.log(req.body.questions);
+    
     surveyModel.create(newSurvey, (err, Survey) => {
         if(err){
             console.error(err);
@@ -46,43 +40,6 @@ export function ProcessSurveysAddPage1(req, res, next){
         res.redirect('/survey-list')
     } )
 }
-
-/////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////
-export function DisplaySurveysAddPage2(req, res, next){
-
-    res.render('index', { title: 'Add a survey - Template 2', page: 'surveys/edit2', survey: {}, displayName: UserDisplayName(req) });
-}
-
-export function ProcessSurveysAddPage2(req, res, next){
-    
-    let newSurvey = surveyModel({
-        title: req.body.title,
-        question1: req.body.question1,
-        question2: req.body.question2,
-        question3: req.body.question3,
-        question4: req.body.question4,
-        question5: req.body.question5,
-        question6: req.body.question6,
-        startDate: req.body.startDate,
-        endDate : req.body.endDate,
-    });
-
-    surveyModel.create(newSurvey, (err, Survey) => {
-        if(err){
-            console.error(err);
-            res.end(err);
-        };
-
-        res.redirect('/survey-list')
-    } )
-}
-
-///////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////
-
 
 export function DisplaySurveysEditPage(req, res, next){
     let id = req.params.id;
@@ -93,26 +50,27 @@ export function DisplaySurveysEditPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Survey', page: 'surveys/edit1', survey: survey, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Edit Survey', page: 'surveys/edit', 
+            survey: survey, displayName: UserDisplayName(req), userId: UserId(req) });
     });    
 }
-
 export function ProcessSurveysEditPage(req, res, next){
+
+    let q = req.body;
+    console.log(q);
 
     let id = req.params.id;
     
     let newSurvey = surveyModel({
         _id: req.body.id,
         title: req.body.title,
-        question1: req.body.question1,
-        question2: req.body.question2,
-        question3: req.body.question3,
-        question4: req.body.question4,
-        question5: req.body.question5,
-        question6: req.body.question6,
-        startDate: req.body.startDate,
-        endDate : req.body.endDate,
+        startdate: req.body.startdate,
+        enddate: req.body.enddate,
+        userid: req.body.userid,
+        active: !!req.body.active,
+        //questions: []
     });
+    //newSurvey.questions.push(req.body.questions);
 
     surveyModel.updateOne({_id: id }, newSurvey, (err, Survey) => {
         if(err){
@@ -124,24 +82,9 @@ export function ProcessSurveysEditPage(req, res, next){
     } )
 }
 
-export function ProcessSurveyDeletePage(req, res, next){
-    let id = req.params.id;
-
-    surveyModel.remove({_id: id}, (err) => {
-        if (err){
-            console.error(err);
-            res.end(err);
-        }
-
-        res.redirect('/survey-list');
-    })
-}
 
 
-/////////////////////////////////////////////////////////////////////
-
-
-export function DisplaySurveysParticipatePage(req, res, next){
+export function DisplaySurveysJoinPage(req, res, next){
     let id = req.params.id;
 
     surveyModel.findById(id, (err, survey) => {
@@ -149,28 +92,32 @@ export function DisplaySurveysParticipatePage(req, res, next){
             console.error(err);
             res.end(err);
         }
+        //let divSurvey = constructSurvey(survey)
 
-        res.render('index', { title: 'Join the Survey', page: 'surveys/participate' , survey: survey, displayName: UserDisplayName(req)});
+        res.render('index', { title: 'Join Survey', page: 'surveys/join',
+            survey: survey, displayName: UserDisplayName(req), userId: UserId(req) });
     });    
 }
 
-export function ProcessSurveysParticipatePage(req, res, next){
+export function ProcessSurveysJoinPage(req, res, next){
+
+    let q = req.body;
+    console.log(q);
 
     let id = req.params.id;
     
-    let newAnswer = answerModel({
+    let newSurvey = surveyModel({
         _id: req.body.id,
-        surveyId: req.body.surveyId,
         title: req.body.title,
-        answer1: req.body.answer1,
-        answer2: req.body.answer2,
-        answer3: req.body.answer3,
-        answer4: req.body.answer4,
-        answer5: req.body.answer5,
-        answer6: req.body.answer6
+        startdate: req.body.startdate,
+        enddate: req.body.enddate,
+        userid: req.body.userid,
+        active: !!req.body.active,
+        //questions: []
     });
+    //newSurvey.questions.push(req.body.questions);
 
-    answerModel.create(newAnswer, (err, Answer) => {
+    surveyModel.updateOne({_id: id }, newSurvey, (err, Survey) => {
         if(err){
             console.error(err);
             res.end(err);
@@ -180,28 +127,64 @@ export function ProcessSurveysParticipatePage(req, res, next){
     } )
 }
 
-/////////////////////////////////////////////////////////////////////
 
-export function DisplaySurveyReportPage(req,res,next){
+
+
+
+export function DisplaySurveysCustomizePage(req, res, next){
     let id = req.params.id;
-
-    answerModel.findById(id, (err, Answer) => {
+    surveyModel.findById(id, (err, survey) => {
         if(err){
             console.error(err);
             res.end(err);
-        }       
-            surveyModel.findById(id, (err, Survey)=>{
-                if(err){
-                    console.error(err);
-                    res.end(err);
-            }
-                answerModel.find(function(err, answersCollection) {
-                    if(err){
-                        console.error(err);
-                        res.end(err);
-                    }
-        res.render('index', { title: 'Survey Report', page: 'surveys/reports', answer: Answer,survey: Survey, answers:answersCollection, displayName: UserDisplayName(req) });
-        })})});
+        }
+
+        res.render('index', { title: 'Customize Survey', page: 'surveys/customize', 
+            survey: survey, displayName: UserDisplayName(req), userId: UserId(req) });
+    });    
 }
 
-//////////////////////////////////////////////////////////////////////
+export function ProcessSurveysCustomizePage(req, res, next){
+    
+    let id = req.params.id;
+    
+    let newSurvey = surveyModel({
+        _id: req.body.id,
+        title: req.body.title,
+        // startdate: req.body.startdate,
+        // enddate: req.body.enddate,
+        // userid: req.body.userid,
+        // active: !!req.body.active,
+        //questions: []
+    });
+
+    let q = req.body.txtQuestionsArray;
+    q = JSON.parse(q);
+
+    for (let i = 0; i < Object.entries(q).length; i++){
+        console.log("q :" + i + "  " + JSON.stringify(q[i]));
+        newSurvey.questions.push(q[i]);
+    }
+    surveyModel.updateOne({_id: id }, newSurvey, (err, Survey) => {
+        if(err){
+            console.error(err);
+            res.end(err);
+        };
+
+        res.redirect('/survey-list')
+    } )
+}
+
+
+
+export function ProcessSurveyDeletePage(req, res, next){
+    let id = req.params.id;
+
+    surveyModel.remove({_id: id}, (err) => {
+        if (err){
+            console.error(err);
+            res.end(err);
+        }
+        res.redirect('/survey-list');
+    })
+}

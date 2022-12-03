@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %>: <%= survey.title%></h1>
+
+            <input type="button" class="btn btn-primary" onclick="constructSurvey('<%= JSON.stringify(survey) %>' , frmSurveyQuestions)" id="btnShowSurvey" value="Show Survey"> <br><br>
+
+
+            <form class="form" id= "frmSurvey" method="POST" style="background-color: grey; padding: 30px; color: aliceblue;">
+                <input type="hidden" name="id" value="<%= survey._id %>" >
+
+            </form>
+
+
+
+
+
+          <!-- <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+                
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a> -->
+
+            </form>
+        </div>
+
+    </div>
+</div>

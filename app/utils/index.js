@@ -9,6 +9,14 @@ export function UserDisplayName(req){
     return '';
 }
 
+export function UserId(req){
+    if(req.user){
+        //console.log("user id here:"+req.user._id)
+        return req.user._id;
+    }
+    return '';
+}
+
 export function AuthGuard(req, res, next){
     if(!req.isAuthenticated()){
         return res.redirect('/login')

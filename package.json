@@ -1,10 +1,10 @@
 {
-  "name": "assignment1",
+  "name": "Easy Survey",
   "version": "0.0.1",
-  "description": "assignment1",
+  "description": "Course Project",
   "main": "server.js",
   "type": "module",
-  "author": "Mohammad Salam",
+  "author": "Tarik Obeidi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
