@@ -1,10 +1,10 @@
 {
-  "name": "Easy Survey",
+  "name": "easysurvey",
   "version": "0.0.1",
   "description": "Course Project",
   "main": "server.js",
   "type": "module",
-  "author": "Tarik Obeidi",
+  "author": "Team 20",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
