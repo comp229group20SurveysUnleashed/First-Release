@@ -1,4 +1,5 @@
 import surveyModel from '../models/surveys.js';
+import answerModel from '../models/answers.js';
 import { UserDisplayName, UserId } from '../utils/index.js';
 
 
@@ -101,23 +102,21 @@ export function DisplaySurveysJoinPage(req, res, next){
 
 export function ProcessSurveysJoinPage(req, res, next){
 
-    let q = req.body;
-    console.log(q);
+    let a = req.body;
+    console.log("processing answers controller");
+    console.log(a);
 
     let id = req.params.id;
     
-    let newSurvey = surveyModel({
-        _id: req.body.id,
-        title: req.body.title,
-        startdate: req.body.startdate,
-        enddate: req.body.enddate,
-        userid: req.body.userid,
-        active: !!req.body.active,
-        //questions: []
+    let newAnswer = answerModel({
+        surveyid: id,
+        //answers: []
     });
-    //newSurvey.questions.push(req.body.questions);
 
-    surveyModel.updateOne({_id: id }, newSurvey, (err, Survey) => {
+
+    newAnswer.answers.push(a);
+    
+    answerModel.create(newAnswer, (err, Answer) => {
         if(err){
             console.error(err);
             res.end(err);
@@ -125,6 +124,7 @@ export function ProcessSurveysJoinPage(req, res, next){
 
         res.redirect('/survey-list')
     } )
+
 }
 
 

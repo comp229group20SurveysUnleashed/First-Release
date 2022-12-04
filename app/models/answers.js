@@ -11,3 +11,4 @@ const AnswerSchema = new Schema({
     collection: 'surveyAnswers'
 });
 
+export default mongoose.model('Answers', AnswerSchema);

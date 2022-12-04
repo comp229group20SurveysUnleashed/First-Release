@@ -5,7 +5,7 @@
 
             <input type="button" class="btn btn-primary" onclick="loadSample(frmSurvey)" id="btnSample" value="Sample">
 
-            <form class="form" id= "frmSurvey" method="POST">
+            <form class="form" id= "frmSurvey" method="POST" name = "questionsCustomization">
                 <input type="hidden" name="id" value="<%= survey._id %>" >
                 
 
@@ -55,7 +55,7 @@
 
                 </fieldset><br>
 
-                <button class="btn btn-primary" type="submit" onclick="composeQuestionc(frmSurvey)">
+                <button class="btn btn-primary" type="submit" onclick="composeQuestion(frmSurvey)">
                     <i class="fas fa-edit"></i> Submit</button>
                 
                 <a href="/survey-list" class="btn btn-warning">

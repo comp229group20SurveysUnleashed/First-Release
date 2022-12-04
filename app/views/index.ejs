@@ -293,6 +293,8 @@
                 }
 
                 function loadSurvey(frm){
+
+                    if (frm.name = "questionsCustomization" )
                     form = new SurveyForm (frm);
 
                     if (form.qTextArray.value == "")
@@ -315,6 +317,11 @@
             function constructSurvey(survey, frmSurvey) {
 
 				let list = JSON.parse(survey).questions;
+                if (list[0] == null) {
+                    alert("There are no questions in this survey");
+                    frmSurvey.elements["btnSubmit"].disabled="disabled";
+                    return false;
+                }
 
                 // Create div.
                 const div = document.createElement("div");
@@ -324,11 +331,12 @@
 
 					if (list[i]["QType"]== "open" ) {
 						let lblQuestionText = document.createElement("label");												
-						lblQuestionText.innerHTML = list[i]["QText"].toString() + " ==> ";
+						lblQuestionText.innerHTML = list[i]["QText"].toString() + ":";
 						div.appendChild(lblQuestionText);
 
 						let txtAnswerInput = document.createElement("input");
-						txtAnswerInput.setAttribute("type", "text");
+						txtAnswerInput.type = "text";
+                        txtAnswerInput.name = "Q" + i;
 						div.appendChild(txtAnswerInput);					
 					}
 						
@@ -389,12 +397,23 @@
 													
 					div.appendChild(document.createElement("br"));
 					div.appendChild(document.createElement("br"));
+
 				}
+
+                // let btnSubmit = document.createElement("button");
+                //     btnSubmit.className="btn btn-primary";
+                //     btnSubmit.type="submit";
+                //     btnSubmit.id = "btnSubmit";
+                //     //btnSubmit.onclick="composeAnswer(frmSurvey)"
+                //     btnSubmit.class="btn btn-primary";
+                //     btnSubmit.innerHTML = '<i class="fas fa-edit"></i> Submit'
+
+				// 	div.appendChild(btnSubmit);
 
                 // Now, add the newly created table with json data, to a container.
                 // const divShowSurvey = document.getElementById('divSurvey');
                 const divShowSurvey = frmSurvey;
-                divShowSurvey.innerHTML = "";
+                //divShowSurvey.innerHTML = "";
                 divShowSurvey.appendChild(div);
             }
 
