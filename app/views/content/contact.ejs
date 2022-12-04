@@ -1,75 +1,80 @@
-<div class="container">
-    <h1 style="color: #6495ed;">Contact Form</h1>   
-</div>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
 
-<p style="font-weight: bolder;"> ✍️ Fill the contact form below for direct communication with our team</p> 
-              
-<table >   
-    
+<body>
+<div class="container">
+    <h1 style="color: #6495ed; font-weight: bolder; position: relative; text-align:center;">Contact Form</h1>
+</div>
+<br>
+<p style="font-weight: bolder; position: relative; text-align:center; "> ✍️ Fill the contact form below for direct communication with our team</p>
+<br>
+<br>
+<!-- Blue container for the contact form-->
+<div style="background-color: steelblue; border-style: solid; ">
+<!-- Contact us Image floating on the right-->
+<img style=" float: right; position: relative; top:25px; left:-40px; height:400px; width:400px; " src="/content/images/contact-us.jpg">
+<table >
+    <!-- Name input-->
     <tr>
         <td style="font-weight: bolder;" >
             <label for="name">Your Name: </label>
-            <input type="text" name="Name" id="Name" placeholder="Enter your  First and Last Name" size="96"  maxlength="256"   minlength="100" >
+            <input style="box-sizing: border-box; border: 2px solid #ccc; background-color:#f8f8f8; font-size: 16px;" type="text" name="Name" id="Name" placeholder="Enter your First and Last Name" size="96"  maxlength="256"   minlength="100" >
             <br>
             <br>
-        </td>       
-        
+        </td>
     </tr>
-
+    <!-- email input-->
+    <tr>
+        <td style="font-weight: bolder;" >
+            <label for="name">Your email: </label>
+            <input style="box-sizing: border-box; border: 2px solid #ccc; background-color:#f8f8f8; font-size: 16px;" type="text" name="Name" id="email" placeholder="Enter your email address" size="96"  maxlength="256"   minlength="100" >
+            <br>
+            <br>
+        </td>
+    </tr>
+    <!-- text area box-->
     <tr>
         <td style="font-weight: bolder;" >
             <label class="comment">Comments:</label>
-            <textarea name="contact" id="contact" cols="100" rows="5" maxlength="100" placeholder="Enter your  message" maxlength="256"   minlength="100" ></textarea>
-       
-             
+            <textarea style=" height: 280px; box-sizing: border-box; border: 2px solid #ccc; background-color:#f8f8f8; font-size: 16px;" name="contact" id="contact" cols="100" rows="5" maxlength="100" placeholder="Enter your  message" maxlength="256" minheight="150"   minlength="100" ></textarea>
         </td>
+       
     </tr>
     <tr>
-        
     </tr>
 </table>
-</fieldset>
-</td>
-</tr>
 
-<tr>
+<!-- Functional Buttons-->
 <br>
 <td class="Btn">
 <input style="font-weight: bolder;" type="submit" onclick="Submit()"  value="Submit Form">
-
 <input style="font-weight: bolder;" type="button" onclick="Erase()" value="Reset">
 </td>
-
-</tr>
-</table>
-</form>
-<br>
-<footer>
-    
-</footer>
-
-</p>
-<br>
-</main>
 </div>
-<br>  
-</body>
 </body>
 
+
+<!-- Function to submit and display a confirmation message-->
 <script>
 function Submit()
 {
-   Erase();
-   alert("Thank you, Our Team will get back to you asap! 🔜 ");
-
+  Erase();
+  Swal.fire({
+  title: 'Thanks for submitting!'+' Our team will reach out to you asap ⌛',
+  text: '',
+  icon: "success",
+  confirmButtonText: 'OK'
+})
 }
+
+<!-- Function to erase the inputs and the text area  -->
+
 
 function Erase()
 {
     var form2 = document.getElementById("contact").value = "";
     var name2 = document.getElementById("Name").value = "";
-    
+    var email1 = document.getElementById("email").value = "";
 }
 </script>
-
-</html>

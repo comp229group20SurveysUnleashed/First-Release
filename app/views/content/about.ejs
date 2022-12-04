@@ -1,22 +1,143 @@
-<body>
-    <main>
-      <h1 class="welcomehome">
-        Welcome to Your New Survey Provider!
-      </h1>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+
+  </head>
+  <body>
   
-      <h1 class="iam">
-        How does it work?
-      </h1>
+    <body>
+      <main>
+        <h1 class="welcomehome">
+          Welcome to Your New Survey Provider!
+        </h1>
+    
+        <h1 class="iam">
+          How does it work?
+        </h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>  
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Account')" id="defaultOpen">Create an Account</button>
+    <button class="tablinks" onclick="openCity(event, 'Login')">Login</button>
+    <button class="tablinks" onclick="openCity(event, 'Custom')">Customize your Survey</button>
+    <button class="tablinks" onclick="openCity(event, 'Part')">Engage</button>
+  </div>
+ 
   
-      <p class="intro">
-        Our servey templates are made simple, stylish and ready to use. Login, edit your questions, set of answers, and share the link with anyone you wish to partecipate.
-      </p>
+  <div id="Account" class="tabcontent">
+    <h3>Create an Account</h3>
+    <p>
+    • Create surveys that are easily accessible by just sharing the link, manage multiple users, and view all surveys at once.
+    </p>
+    <p>
+    • Ensure confidential data is protected with enhanced security for your account.
+    </p>
+    <p>
+    • Check the automated feedback by selecting the report section if the survey.
+    </p>
+    <br>
+    <button class="homebutton" onclick="location.href = 'register'" >
+      Get Started Now, It's Free!
+    </button>    
+  </div>
   
-      <p class="phome">
-        <button class="homebutton" onclick="location.href = 'login'" >
-          Get Started Now, It's Free!
-        </button>
-      </p>
-    </main>
+  <div id="Login" class="tabcontent">
+    <h3>Login</h3>
+    <p>Access your account trough the login page, you will need your username and your password.</p> 
+    <img onclick="location.href = 'login'" style="   display: block; margin-left: auto;margin-right: auto; height:200px; width:300px; " src="/content/images/login.gif">
+  </div>
+  
+  <div id="Custom" class="tabcontent">
+    <h3>Customize your Survey</h3>
+    <p>
+      • The survey creation feature of our application is accessible once you are logged in, choose the template that you'd like to use, then click Create Survey. It is possible to edit and delete your survey at any time!
+    </p>
+    <p>
+      • You can review the results of your survey trough the REPORT section, available for every user.
+    </p>
+    <img style=" display: block; margin-left: auto;margin-right: auto; height:120px; width:300px; " src="/content/images/custom.gif">
+  </div>
+  
+  <div id="Part" class="tabcontent">
+    <h3>Join a survey</h3>
+    <p>There is no need to create an account in order to participate. Select the survey you'd like to join in, then click "participate".</p>
+    <img href="list.ejs" style="   display: block; margin-left: auto;margin-right: auto; height:200px; width:300px; " src="/content/images/click.gif">
+  </div>
+
+  <script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+  </script>
+     
   </body>
+
+  <style>
+    * {box-sizing: border-box}
+    body {font-family: "Lato", sans-serif;}
+    
+    /* Style the tab */
+    .tab {
+      float: left;
+      border: 0.5rem solid;
+      background-color: #008037;
+      width: 30%;
+      height: 300px;
+      font-weight: bolder;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
   
+    /* Style the buttons inside the tab */
+    .tab button {
+      display: block;
+      background-color: inherit;
+      color: black;
+      padding: 22px 16px;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+    
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: steelblue;
+    }
+    
+    /* Create an active/current "tab button" class */
+    .tab button.active {
+      background-color:royalblue;
+    }
+    
+    /* Style the tab content */
+    .tabcontent {
+      float: left;
+      padding: 0px 12px;
+      border: 0.5rem solid;
+      width: 70%;
+      border-left: none;
+      height: 300px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    </style>

@@ -1,3 +1,17 @@
+/*  RESPONSIVE   */
+
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+  #primary { width:67%; }
+  #secondary { width:30%; margin-left:3%;}  
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  #primary { width:100%; }
+  #secondary { width:100%; margin:0; border:none; }
+}
+
 .container-fluid{
     user-select: none;
 }
@@ -20,12 +34,29 @@
 .comment
 {
     position: relative;
-    top: -90px;
+    top: -260px;
+}
+textarea
+{
+  resize: none;
 }
 
 
 /* HOME PAGE CSS */
 
+
+body
+{
+  width: 100%;
+  height: 100%;
+  background-image:url("/content/images/back.jpg");
+}
+
+
+.color1
+{
+  color: #000;
+}
 
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -157,6 +188,7 @@
     text-align-last: center;
     position: relative;
     top: 120px;
+    font-weight: bolder;
 }
 
 .iam{
@@ -180,6 +212,14 @@
     top: 250px;
 }
 .homebutton{
-background-color: #1549aa; 
+background-color: #0D6EFD; 
 color: white;
+display: block; margin-left: auto;margin-right: auto; height: 60px; width: 250px;
+}
+
+/*  Login */
+
+#create
+{
+  font-weight: bolder;
 }
