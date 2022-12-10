@@ -5,7 +5,16 @@ import { UserDisplayName, UserId } from '../utils/index.js';
 
 
 export function DisplaySurveyList(req, res, next){
-    surveyModel.find(function(err, surveysCollection) {
+ 
+    //let id = req.params.id;
+    
+    console.log(UserId(req).toString());
+ 
+    let condition = {userid : UserId(req).toString()};
+ 
+    if (UserId(req).length == 0) condition = {$and:[{active:true},{enddate:{ $gte: Date.now() }}]};   
+    
+    surveyModel.find(condition , function(err, surveysCollection) {
         if(err){
             console.error(err);
             res.end(err);

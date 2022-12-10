@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const AnswerSchema = new Schema({
     surveyid: String,
-    answers: [] ,  
+    answers: [],  
 }, {
     timestamps: true,
     collection: 'surveyAnswers'

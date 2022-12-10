@@ -33,7 +33,7 @@ export function GenerateToken(user){
     }
 
     const jwtOptions = {
-        expiresIn: 604800 //1 Week
+        expiresIn: 60004800 //1 Week
     }
 
     return jwt.sign(payload, Secret, jwtOptions);

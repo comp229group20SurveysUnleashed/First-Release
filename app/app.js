@@ -5,6 +5,7 @@ import session from 'express-session';
 
 
 
+
 //modules for jwt
 import cors from 'cors';
 import passportJWT, { ExtractJwt } from 'passport-jwt';
@@ -44,6 +45,8 @@ import surveysRouter from './routes/surveys.router.server.js';
 import indexRouter from './routes/index.route.server.js';
 import authRouter from './routes/auth.route.server.js';
 import apiauthRouter from './routes/api/auth.api.route.server.js';
+import profilerouter from './routes/profile.route.server.js';
+import { config } from 'process';
 // instatiate express app
 const app = express();
 
@@ -98,6 +101,11 @@ let jwtOptions = {
 }
 
 
+//app.use("/api", expressJwt({secret: config.secret}));
+//app.use("/auth/change-password", expressJwt({secret: config.secret}));
+//app.use("/auth", require("./routes/auth.route.server"));
+
+
 let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) =>{
     User.findById(jwt_payload.id)
     .then(user =>{
@@ -121,6 +129,7 @@ app.use('/', indexRouter);
 app.use('/', surveysRouter);
 app.use('/', authRouter);
 app.use('/api/auth', apiauthRouter);
+app.use('/', profilerouter);
 
 
 export default app;

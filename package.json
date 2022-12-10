@@ -1,10 +1,10 @@
 {
-  "name": "easysurvey",
+  "name": "Easy Survey",
   "version": "0.0.1",
   "description": "Course Project",
   "main": "server.js",
   "type": "module",
-  "author": "Team 20",
+  "author": "Tarik Obeidi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
@@ -15,14 +15,11 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.21",
-    "mongodb": "^4.12.1",
     "mongoose": "^6.6.2",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.1.2",
-    "xlsx": "^0.18.5"
+    "passport-local-mongoose": "^7.1.2"
   }
 }
