@@ -8,7 +8,7 @@ import { DisplaySurveyList,
     DisplaySurveysCustomizePage,
     ProcessSurveysCustomizePage, 
     DisplaySurveysJoinPage,
-    ProcessSurveysJoinPage   } from "../controllers/surveys.controller.server.js";
+    ProcessSurveysJoinPage, DisplaySurveyReportPage   } from "../controllers/surveys.controller.server.js";
 
 import { AuthGuard } from "../utils/index.js";
 
@@ -24,7 +24,9 @@ router.get('/survey-customize/:id', DisplaySurveysCustomizePage);
 router.get('/survey-delete/:id', ProcessSurveyDeletePage);
 router.get('/survey-join/:id', DisplaySurveysJoinPage);
 router.post('/survey-join/:id', ProcessSurveysJoinPage);
-
+//////////////////////////// Reports Route ///////////////////// --- MADE CHANGES HERE 
+router.get('/surveys-reports/:id', DisplaySurveyReportPage)
+///////////////////////////////////////////////////////////////////////////////////////
 
 
 export default router;

@@ -5,7 +5,6 @@ import session from 'express-session';
 
 
 
-
 //modules for jwt
 import cors from 'cors';
 import passportJWT, { ExtractJwt } from 'passport-jwt';

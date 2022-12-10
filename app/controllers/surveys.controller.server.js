@@ -3,6 +3,7 @@ import answerModel from '../models/answers.js';
 import { UserDisplayName, UserId } from '../utils/index.js';
 
 
+
 export function DisplaySurveyList(req, res, next){
     surveyModel.find(function(err, surveysCollection) {
         if(err){
@@ -175,7 +176,53 @@ export function ProcessSurveysCustomizePage(req, res, next){
     } )
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////// Survey Reports Controller ///////////////// ---- MADE CHANGES HERE -----
+export function DisplaySurveyReportPage(req,res,next){
+    // Getting the id from survey/list page for the id of the survey - present in header when redirection takes place via route 
+    let id = req.params.id;
+    
+    // Creation of two object arrays that will be exported to be injected in ejs template for reports page
+    let answerCollection = [];
+    let questionsCollection = [];
 
+    // creation of answer object via answerCollection in answers.js
+    answerModel.find({surveyid : id}, (err, Answer) =>{
+        if(err){
+            console.error(err);
+            res.end(err);
+        }
+            // creation of answer collection array from answer object recieved from db - this will be exported via render function to ejs template
+            for (let i = 0; i<Answer.length; i++){
+                answerCollection.push(Answer[i].answers[0]);           
+            }
+        
+            // console.log(answerCollection); -- debugging purposes
+
+        // creation of survey object via surveyCollection in survey.js
+        surveyModel.findById(id, (err, Survey) =>{
+            if (err) {
+                console.error(err);
+                res.end(err);
+            }  
+            // creation of questions collection array from survey object recieved from db - this will be exported via render function to ejs template 
+            for (let i=0; i<Survey.questions.length; i ++){
+                questionsCollection.push(Survey.questions[i]);
+            }
+
+            // render function to export the collections created above 
+            res.render('index', { title: 'Survey Report', page: 'surveys/reports',answer: Answer, answers: answerCollection, surveyQ: questionsCollection, survey: Survey, displayName: UserDisplayName(req) });
+
+        })
+
+    })
+
+}
+
+////////////////////////////////////////////////////////////- Survey report controller ends here ---------------- Made Changes upto here
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
 export function ProcessSurveyDeletePage(req, res, next){
     let id = req.params.id;
@@ -188,3 +235,11 @@ export function ProcessSurveyDeletePage(req, res, next){
         res.redirect('/survey-list');
     })
 }
+
+
+// <% surveyQ.forEach((value, key)=> { %>
+//     <h5 class="card-title"><%= JSON.stringify(value) %></h5>
+// <% }); %>
+// <% for(let count1 = 0; count1 < answers.length; count1++) { %>
+//     <p class="card-text"><%= JSON.stringify(answers[count1]) %></p>
+// <% }; %>

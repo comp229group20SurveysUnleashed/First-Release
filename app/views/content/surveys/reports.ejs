@@ -1,47 +1,60 @@
 <div class="container">
-    <h1 class="text-center"><%= title %></h1>
-    <div class="card text-center">
+  <div class=" card-footer text-center  ">
+    <a href="/survey-list" class="btn btn-warning text-center">
+        <i class="fas fa-undo"></i> Return to Survey Listing</a>
+  </div>
+    <h1 class="text-center">Reports</h1><hr>
+    <h3 class = "text-center">Survey Title - "<%= survey.title %>"</h3><br>
+
+    <div class = "row">
+    <div class = " col-md-12">   
+    <!-- <h3 class = "text-center">Number of Answer Sets Completed - <%= answers.length %></h3><hr> -->
+    <div class = "col-md-12">
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="colgroup" colspan ="100" class = "p-3 mb-2 bg-success text-white text-center">Surveys Completed - <%= answers.length %> </th>
+            </tr>
+            <tr>
+              <th>
+                Survey #
+              </th>
+              <% for(let i = 0; i< surveyQ.length; i++){ %>
+               <th> 
+                Q (<%= i+1 %>) 
+               </th> 
+               <% } %>
+            </tr>
+        </thead>
+        <tbody id="surveyA"> 
+          <tr>
+              <% let keys; let i; let j; let key; let k; let innerkeys; let l; let innerkey; 
+                for(i = 0; i< answers.length; i++){  
+                   keys = Object.keys(answers[i]); %>
+                   <td class="text-danger"> 
+                     Survey(<%= i+1 %>) Answers
+                    </td> 
+                    <% for (j = 1; j< keys.length; j++){
+                      key = keys[j]; %>
+                      <td>
+                      <%= answers[i][key]; %>
+                      <% if (Array.isArray(answers[i][key])){ %>
+                          <% for(k = 0; k< (answers[i][key]).length; k++){ %>
+                            <% innerkeys = Object.keys(answers[i][key][k]); %> 
+                            <% for ( l = 0; l< innerkeys.length; l++){ %>
+                                <% innerkey = innerkeys[l]; %>
+                                <%= answers[i][key][k][innerkey] %> ,
+                            <% } %>
+                          <% } %>
+                          </td>
+                    <% }} %>                           
+                  </tr> 
+              <% ;} %>
+      </tbody>
+      </table>
+    </div>
+  </div>  
+  </div>
     
-    <% if(answers.surveyId = survey._id){ %>
-        <% for(let count = 0; count < answers.length; count++) { %>
-        <div class="card-header">
-            <h3>"<%= survey.title %>"</h3>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= survey.question1 %></h5>
-          <p class="card-text"><%= answers[count].answer1%></p>
-        </div>
 
-        <div class="card-body">
-            <h5 class="card-title"><%= survey.question2 %></h5>
-            <p class="card-text"><%= answers[count].answer2%></p>
-          </div>
-
-        <div class="card-body">
-          <h5 class="card-title"><%= survey.question3 %></h5>
-          <p class="card-text"><%= answers[count].answer3%></p>
-        </div>
-
-        <div class="card-body">
-            <h5 class="card-title"><%= survey.question4 %></h5>
-            <p class="card-text"><%= answers[count].answer4%></p>
-        </div>
-
-        <div class="card-body">
-          <h5 class="card-title"><%= survey.question5 %></h5>
-          <p class="card-text"><%= answers[count].answer5%></p>
-        </div>
-
-        <div class="card-body">
-            <h5 class="card-title"><%= survey.question6 %></h5>
-            <p class="card-text"><%= answers[count].answer6%></p>
-        </div>
-        <% } %>
-    <% } %>
-        <div class="card-footer text-muted">
-            <a href="/survey-list" class="btn btn-warning text-center">
-                <i class="fas fa-undo"></i> Return to Survey Listing</a>
-        </div>
-      </div>
-
-</div> 
+      
